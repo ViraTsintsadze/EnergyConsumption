@@ -1,0 +1,3 @@
+# 4) iterate over Tabs_list: __KEYWORD2__ = Tabs_list[i]
+tab__KEYWORD2__ = tk.Frame(Tab_control, bg=Color0) 
+Tab_control.add(tab__KEYWORD2__, text= "__KEYWORD2__")

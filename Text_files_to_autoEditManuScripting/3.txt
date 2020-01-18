@@ -1,0 +1,13 @@
+# 3) just ones
+    savefile = filedialog.asksaveasfilename(title = "Choose file", filetypes = (('CSV files','*.csv'),))
+    New_Parameters.to_csv(savefile+'.csv', index=False)
+    return New_Parameters
+    
+row_counter=0
+SAS_Var_N_List = pdVarDescr['SAS Variable Name'].to_list()
+New_Parameters = pd.DataFrame(np.zeros((1,len(SAS_Var_N_List))), columns = SAS_Var_N_List)
+
+windowEdit = tk.Tk()
+windowEdit.configure(background=Color0)
+
+Tab_control = ttk.Notebook(windowEdit)

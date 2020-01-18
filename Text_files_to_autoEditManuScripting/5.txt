@@ -1,0 +1,24 @@
+
+##############################################################################################################
+
+SAS_Var_Name='__KEYWORD1__'
+Coded_Responses =pdVarDescr[pdVarDescr['SAS Variable Name']==SAS_Var_Name]['Coded Responses'].values
+Coded_ResponsesList = np.array2string(Coded_Responses)[2:-2].split('\\n')
+Coded_Responses_Texts =pdVarDescr[pdVarDescr['SAS Variable Name']==SAS_Var_Name]['Final Response Set'].values
+C_Resp_Txt_List=np.array2string(Coded_Responses_Texts)[2:-2].split('\\n')
+Descr =pdVarDescr[pdVarDescr['SAS Variable Name']==SAS_Var_Name]['Variable Description'].values[0]
+
+__KEYWORD1___tk_Var = tk.IntVar()
+tk.Label(tab__KEYWORD2__, text = Descr, font=('Helvetica', 10, 'bold'), bg = Color0).grid(column=0, row=row_counter, sticky="E")
+for ind in range(len(Coded_ResponsesList)):
+    Code=Coded_ResponsesList[ind]
+    Text=C_Resp_Txt_List[ind]
+    if (str_entry_indicator in Code): #check if Entry needed
+        widg, row_counter=add_entry(tab__KEYWORD2__, text=Text, variable=__KEYWORD1___tk_Var, value=Code, row_counter = row_counter)
+    else:
+        widg, row_counter=add_radiobut(tab__KEYWORD2__, text=Text, variable=__KEYWORD1___tk_Var, value=Code, row_counter = row_counter)
+row_counter+=1
+ttk.Separator(tab__KEYWORD2__, orient=HORIZONTAL).grid(column=0, row=row_counter, sticky='EW', columnspan = 2)
+row_counter+=1
+
+####################################################################################################################

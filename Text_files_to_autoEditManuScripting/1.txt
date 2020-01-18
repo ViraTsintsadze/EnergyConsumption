@@ -1,0 +1,31 @@
+# 1) just ones
+import tkinter as tk
+from tkinter import ttk
+import os
+import pandas as pd
+import numpy as np
+import re
+from tkinter import filedialog
+from tkinter import HORIZONTAL
+
+
+Color0 = 'alice blue' #Ligtest
+Color4 = 'SteelBlue4' #Darkest, more grey then blue
+
+cokebook_file = 'codebook_edited_shortened.xlsx'
+path = os.getcwd()
+pdCodebook = pd.read_excel(os.path.join(path,cokebook_file), delimiter=',', header=0)
+pdVarDescr = pd.DataFrame(pdCodebook, columns = ['Cath #', 'SAS Variable Name', 'Variable Description','Coded Responses' ,'Final Response Set'])
+str_entry_indicator=' - '
+
+def add_radiobut(fr, text, variable, value, row_counter):
+    widg = tk.Radiobutton(fr, text=text, variable=variable, value=value, bg = Color0)
+    widg.grid(column=1, row=row_counter, sticky="W")
+    return widg,row_counter+1
+
+def add_entry(fr, text, variable, value, row_counter ):
+    widg = tk.Entry(fr, textvariable=variable).grid(column=1, row=row_counter, sticky="W")       
+    return widg, row_counter+1
+
+   
+def buttonSave_clicked():

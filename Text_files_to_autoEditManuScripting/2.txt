@@ -1,0 +1,2 @@
+
+    New_Parameters.iloc[0]['__KEYWORD1__'] = __KEYWORD1___tk_Var.get()
